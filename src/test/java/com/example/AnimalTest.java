@@ -25,7 +25,8 @@ public  class AnimalTest {
         public static Object[][] getAnimalType() {
             return new Object[][] {
                     {"Травоядное", List.of("Трава", "Различные растения")},
-                    {"Хищник", List.of("Животные", "Птицы", "Рыба")}
+                    {"Хищник", List.of("Животные", "Птицы", "Рыба")},
+                    {"Другой тип", List.of()}
             };
         }
 
