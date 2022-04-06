@@ -14,7 +14,7 @@ import org.mockito.Mockito;
 public class LionTest {
 
     @Mock
-    Feline feline;
+    static Feline feline;
 
     @RunWith(Parameterized.class)
     public static class LionTestParameterizedGender {
