@@ -3,14 +3,14 @@ package com.example;
 import java.util.List;
 
 /*
-Наследуем Lion от Feline, чтобы изолировать класс
+Инъекция зависимостей через setter метод, чтобы изолировать класс Lion от Feline
  */
-public class Lion extends Feline{
+public class Lion {
 
+    private Feline feline;
     boolean hasMane;
 
     public Lion(String sex) throws Exception {
-        super();
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -20,8 +20,16 @@ public class Lion extends Feline{
         }
     }
 
+    public void setFeline(Feline feline) {
+        this.feline = feline;
+    }
+
     public int getKittens() {
-        return super.getKittens();
+        return feline.getKittens();
+    }
+
+    public int getKittens(int kittensCount) {
+        return feline.getKittens(kittensCount);
     }
 
     public boolean doesHaveMane() {
@@ -29,6 +37,7 @@ public class Lion extends Feline{
     }
 
     public List<String> getFood() throws Exception {
-        return getFood("Хищник");
+        return feline.getFood("Хищник");
     }
 }
+

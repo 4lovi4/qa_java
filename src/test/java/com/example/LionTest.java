@@ -6,9 +6,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.experimental.runners.Enclosed;
 import java.util.List;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.Mockito;
 
 @RunWith(Enclosed.class)
 public class LionTest {
+
+    @Mock
+    Feline feline;
 
     @RunWith(Parameterized.class)
     public static class LionTestParameterizedGender {
@@ -34,6 +40,7 @@ public class LionTest {
         public void shouldReturnHaveMane() throws Exception {
             try {
                 Lion lion = new Lion(gender);
+                lion.setFeline(feline);
                 boolean actualHasMane = lion.doesHaveMane();
                 assertEquals(expectedMane, actualHasMane);
             } catch (Exception e) {
