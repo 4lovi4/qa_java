@@ -3,14 +3,14 @@
 import java.util.List;
 
 /*
-Наследуем Lion от Feline, чтобы изолировать класс
+Инъекция зависимостей через setter метод, чтобы изолировать класс Lion от Feline
  */
-public class Lion extends Feline{
+public class Lion {
 
+    private Feline feline;
     boolean hasMane;
 
-    public Lion(String sex) throws Exception {
-<span class="fc" id="L13">        super();</span>
+<span class="fc" id="L13">    public Lion(String sex) throws Exception {</span>
 <span class="fc bfc" id="L14" title="All 2 branches covered.">        if (&quot;Самец&quot;.equals(sex)) {</span>
 <span class="fc" id="L15">            hasMane = true;</span>
 <span class="fc bfc" id="L16" title="All 2 branches covered.">        } else if (&quot;Самка&quot;.equals(sex)) {</span>
@@ -20,16 +20,25 @@ public class Lion extends Feline{
         }
 <span class="fc" id="L21">    }</span>
 
+    public void setFeline(Feline feline) {
+<span class="fc" id="L24">        this.feline = feline;</span>
+<span class="fc" id="L25">    }</span>
+
     public int getKittens() {
-<span class="fc" id="L24">        return super.getKittens();</span>
+<span class="fc" id="L28">        return feline.getKittens();</span>
+    }
+
+    public int getKittens(int kittensCount) {
+<span class="fc" id="L32">        return feline.getKittens(kittensCount);</span>
     }
 
     public boolean doesHaveMane() {
-<span class="fc" id="L28">        return hasMane;</span>
+<span class="fc" id="L36">        return hasMane;</span>
     }
 
     public List&lt;String&gt; getFood() throws Exception {
-<span class="fc" id="L32">        return getFood(&quot;Хищник&quot;);</span>
+<span class="fc" id="L40">        return feline.getFood(&quot;Хищник&quot;);</span>
     }
 }
+
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
